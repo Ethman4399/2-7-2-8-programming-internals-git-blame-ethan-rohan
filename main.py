@@ -22,11 +22,10 @@ def main(stdscr):
         if key == ord("1"):
             stdscr.clear()
             stdscr.addstr(0,0, "Here are the Commands:")
-            stdscr.addstr(8,0, f"{datetime.datetime.now()}", curses.color_pair(6))
+            stdscr.addstr(7,0, f"{datetime.datetime.now()}", curses.color_pair(5))
             stdscr.addstr(2,0, "Press [+] to Add a Note", curses.color_pair(6))
             stdscr.addstr(3,0, "Press [-] to Delete a Note", curses.color_pair(4))
-            stdscr.addstr(4,0, "Press [Shift+9] to View Previous Notes", curses.color_pair(5))
-            stdscr.addstr(6,0, "Press the [2] to go back to the main menu!", curses.color_pair(3))   
+            stdscr.addstr(5,0, "Press the [2] to go back to the main menu!", curses.color_pair(3))   
         elif key == ord("2"):
             stdscr.clear()
             stdscr.addstr(0,0, "Thank You for using this Note Taking App! ", curses.color_pair(1))
@@ -34,8 +33,17 @@ def main(stdscr):
             #Refreshes everthing
             stdscr.refresh()
         elif key == ord('+'):
-            curses.wrapper(main)
-
+            stdscr.clear()
+            stdscr.addstr(1,0, "Press [-] to Delete a Note", curses.color_pair(4))
+            stdscr.addstr(0,0, "TYPE HERE: ", curses.color_pair(1))
+            curses.echo()
+        elif key == ord('-'):
+            curses.endwin()
+            stdscr.clear()
+            curses.echo()
+            stdscr.addstr(0,0,"Window Closed!", curses.color_pair(6))
+        elif key == ord():
+            curses.clrtoeol()
         else:
             #If 1 is not pressed then pass (Does Nothing)
             pass
